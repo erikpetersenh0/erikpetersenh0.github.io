@@ -7,7 +7,7 @@
 <style>
 /* ====== EDITA COPY: busca las .scene ====== */
 :root{
-  --track: 1600vh;
+  --track: 1840vh;
   --ink:#eaf0ff; --dim:rgba(234,240,255,.62); --faint:rgba(234,240,255,.40);
   --grad:linear-gradient(90deg,#5b8cff 0%,#8a5bff 35%,#c04bff 65%,#ff7a3d 100%);
   --panel:rgba(12,14,22,.42); --stroke:rgba(255,255,255,.10);
@@ -180,6 +180,31 @@ body{background:#04050a;color:var(--ink);font-family:var(--font);-webkit-font-sm
 .gitem{border-radius:12px;overflow:hidden;cursor:pointer;transform:translateZ(0);transition:transform .35s,box-shadow .35s;background:#0b0e18}
 .gitem:hover{transform:scale(1.035);box-shadow:0 18px 55px rgba(100,85,230,.5)}
 .gitem img{width:100%;display:block}
+/* ===== SECCIONES EDITORIALES (mesetas de narrativa) ===== */
+#s-trans,#s-train{position:fixed;inset:0;z-index:3;opacity:0;visibility:hidden;pointer-events:none;overflow:hidden}
+#s-trans.vis,#s-train.vis{visibility:visible}
+#s-trans::before,#s-train::before{content:"";position:absolute;inset:0;background:rgba(3,4,10,.8)}
+.ed-wrap{position:absolute;left:50%;top:50%;transform:translate(-50%,-50%);width:min(1060px,90vw);max-height:92vh;overflow:hidden}
+.ed-wrap .eyebrow{margin-bottom:12px}
+.ed-wrap h1{font-size:clamp(30px,4vw,52px);font-weight:600;letter-spacing:-.025em;line-height:1.06;text-shadow:0 2px 40px rgba(0,0,0,.6)}
+.ed-wrap .lede{margin-top:14px;font-size:clamp(14px,1.25vw,17.5px);line-height:1.6;color:var(--dim);max-width:64ch}
+.rv{opacity:0;transform:translateY(26px);transition:opacity .6s ease,transform .8s cubic-bezier(.22,1,.36,1)}
+.rv.in{opacity:1;transform:translateY(0)}
+.case{display:grid;grid-template-columns:minmax(150px,220px) 1fr;gap:clamp(16px,3vw,34px);align-items:start;padding:clamp(14px,2.2vh,24px) 0;border-top:1px solid var(--stroke);margin-top:6px}
+.case .num{font-size:clamp(34px,4.4vw,58px);font-weight:700;letter-spacing:-.03em;line-height:1;background:var(--grad);-webkit-background-clip:text;background-clip:text;color:transparent}
+.case .num small{display:block;font-size:11px;font-weight:600;letter-spacing:.16em;text-transform:uppercase;color:var(--faint);-webkit-text-fill-color:var(--faint);margin-top:8px}
+.case h3{font-size:clamp(15px,1.35vw,19px);font-weight:600;letter-spacing:-.01em;margin-bottom:6px}
+.case p{font-size:clamp(12.5px,1.08vw,15px);line-height:1.6;color:var(--dim)}
+.trow{display:flex;flex-wrap:wrap;gap:clamp(14px,3vw,40px);margin:clamp(16px,3vh,30px) 0}
+.tstat{flex:1;min-width:150px}
+.tstat .v{font-size:clamp(30px,3.6vw,50px);font-weight:700;letter-spacing:-.03em;background:var(--grad);-webkit-background-clip:text;background-clip:text;color:transparent}
+.tstat .c{font-size:12.5px;line-height:1.5;color:var(--dim);margin-top:6px}
+.ed-note{border-top:1px solid var(--stroke);padding-top:16px;font-size:clamp(13px,1.15vw,16px);color:var(--ink);font-weight:500}
+@media(max-width:620px){
+  .case{grid-template-columns:1fr;gap:6px;padding:12px 0}
+  .ed-wrap{width:92vw}
+  .ed-wrap .lede{font-size:13px}
+}
 /* lightbox con panel de campaña */
 #lb{position:fixed;inset:0;z-index:30;background:rgba(2,3,8,.94);display:none;align-items:center;justify-content:center;padding:3vh 3vw}
 #lb.open{display:flex}
@@ -252,7 +277,7 @@ body.lb-open{overflow:hidden}
 
 /* ================= MÓVIL ≤620px ================= */
 @media(max-width:620px){
-  :root{--track:1820vh}
+  :root{--track:2100vh}
   #dots{display:none}
 
   /* texto genérico: ancho completo, abajo, escalado; scrims inferiores */
@@ -341,9 +366,9 @@ body.lb-open{overflow:hidden}
   <!-- 1 HERO 0-5.6 -->
   <section class="scene pos-left" data-t0="0" data-t1="5.6">
     <div class="inner">
-      <div class="eyebrow fadeup">Erik S. Petersen · Creative Technologist</div>
-      <h1 class="lq">Creative direction, <span class="g">powered by AI.</span></h1>
-      <p class="fadeup">80+ projects shipped. One operator running a full growth department: AI content engines, automation frameworks and creative direction that convert.</p>
+      <div class="eyebrow fadeup">Erik S. Petersen · AI Transformation Director</div>
+      <h1 class="lq">Teams, transformed <span class="g">by AI.</span></h1>
+      <p class="fadeup">Director-level creative and AI leadership. I redesign how teams produce: proprietary software, automation frameworks, training and creative direction. 80+ projects across 6 industries.</p>
     </div>
   </section>
 
@@ -449,17 +474,57 @@ body.lb-open{overflow:hidden}
     <div class="inner">
       <div class="eyebrow fadeup">10 — AI Frameworks</div>
       <h1 class="lq">Frameworks that <span class="g">ship.</span></h1>
-      <p class="fadeup">Viral-content engines that script, generate and publish on autopilot. Internal apps built with Claude Code in days, not quarters. Workflows that run your ops while you sleep.</p>
+      <p class="fadeup">Viral-content engines that script, generate and publish on autopilot. Internal apps and CRMs built with Claude Code in days, not quarters. Custom web builds: CSS motion systems, Shopify Liquid, headless storefronts. Workflows that run your ops while you sleep.</p>
     </div>
   </section>
 </div>
+
+<!-- EDITORIAL 1: transformación de equipos -->
+<section id="s-trans">
+  <div class="ed-wrap">
+    <div class="eyebrow rv" data-at="0.02">AI Transformation</div>
+    <h1 class="rv" data-at="0.04">I rebuild how teams <span class="g">produce.</span></h1>
+    <p class="lede rv" data-at="0.1">Campaigns are the visible layer. The real work is underneath: I design and ship the proprietary software, CRMs and platforms that change what a team can output, permanently.</p>
+    <div class="case rv" data-at="0.28">
+      <div class="num">20&times;<small>output per operator</small></div>
+      <div><h3>Content Production OS, end to end</h3>
+      <p>Designed, built and shipped a full content-production platform: ideation, AI generation, review workflow, brand enforcement and publishing in one pipeline. One operator now matches the output of a twenty-person studio: 500+ assets a month at 92% lower cost per asset.</p></div>
+    </div>
+    <div class="case rv" data-at="0.5">
+      <div class="num">&euro;42K<small>SaaS replaced / yr</small></div>
+      <div><h3>Proprietary CRM, built from scratch</h3>
+      <p>Custom CRM with deal flow, WhatsApp and email orchestration, attribution and reporting baked in. Replaced a stack of licences, cut tool-switching to zero and lifted pipeline velocity 31% in the first quarter.</p></div>
+    </div>
+    <div class="case rv" data-at="0.72">
+      <div class="num">12K<small>members, owned platform</small></div>
+      <div><h3>Community app, web + mobile</h3>
+      <p>Built an owned community platform with courses, events and payments. 68% weekly activity, zero platform fees, full data ownership. The audience became an asset on the balance sheet, not a rented row in someone else's database.</p></div>
+    </div>
+  </div>
+</section>
+
+<!-- EDITORIAL 2: formación IA -->
+<section id="s-train">
+  <div class="ed-wrap">
+    <div class="eyebrow rv" data-at="0.02">AI Enablement &amp; Training</div>
+    <h1 class="rv" data-at="0.04">Teams that stay <span class="g">transformed.</span></h1>
+    <p class="lede rv" data-at="0.12">Tools don't transform companies. People do. I train marketing, production and ops teams to run AI-first workflows, hands-on and on their real work, until the new way is the default way.</p>
+    <div class="trow">
+      <div class="tstat rv" data-at="0.3"><div class="v">200+</div><div class="c">professionals trained across 14 hands-on workshops</div></div>
+      <div class="tstat rv" data-at="0.42"><div class="v">4h</div><div class="c">per deliverable after adoption, down from 3 days</div></div>
+      <div class="tstat rv" data-at="0.54"><div class="v">85%</div><div class="c">adoption held at 30 days, measured in real usage</div></div>
+      <div class="tstat rv" data-at="0.66"><div class="v">6</div><div class="c">departments converted to AI-first operations end to end</div></div>
+    </div>
+    <p class="ed-note rv" data-at="0.8">From first workshop to a self-running AI operation in 90 days. That is the mandate I take.</p>
+  </div>
+</section>
 
 <!-- DESIGN WALL: The work speaks (marca & publicidad, sin recorte) -->
 <section id="s-des">
   <div class="gal-head">
     <div class="eyebrow">05 &mdash; Selected Work</div>
     <h1>The work <span class="g">speaks.</span></h1>
-    <div class="gsub">Brand &amp; advertising design &middot; click to view</div>
+    <div class="gsub">High-impact branding &amp; advertising systems &middot; click to view</div>
   </div>
   <div id="dcols"><div class="gcol"></div><div class="gcol"></div><div class="gcol gx"></div><div class="gcol gx"></div></div>
 </section>
@@ -534,7 +599,7 @@ const vid=document.getElementById('vid'),track=document.getElementById('track'),
 let DUR=125.6,targetT=0,curT=0,ready=false;
 const counted={};
 /* THE VAULT: meseta de scroll — el vídeo se congela en RK_T mientras la galería avanza */
-const DES_T=62, DL=16, GAL_T=92.6, GL=16, RK_T=96.2, PL=26;
+const TR_T=57.6, TRL=15, DES_T=62, DL=16, TN_T=87.6, TNL=13, GAL_T=92.6, GL=16, RK_T=96.2, PL=26;
 /* ===== MASONRY (meseta 2 en GAL_T): columnas parallax ===== */
 const GAL_IMGS=["com_fashion_coat.webp", "com_prod_handbag.webp", "com_prod_watch.webp", "com_fashion_gown.webp", "com_prod_sneakers.webp", "com_prod_serum.webp", "com_fashion_denim.webp", "com_prod_chocolate.webp", "com_prod_phone.webp", "com_fashion_suit.webp", "com_prod_necklace.webp", "com_prod_vase.webp", "com_fashion_athletic.webp", "com_prod_glasses.webp", "com_prod_earbuds.webp", "com_prod_perfume.webp"];
 const GSPEED=[1,.8,1.15,.88];
@@ -570,6 +635,20 @@ function makeMason(secId){
   };
 }
 const desM=makeMason('s-des'), galM=makeMason('s-gal');
+function makeEditorial(secId){
+  const sec=document.getElementById(secId);
+  const items=[...sec.querySelectorAll('.rv')];
+  let lk=-1,lo=-1;
+  return { render(k,op){
+    if(Math.abs(k-lk)<0.0006&&Math.abs(op-lo)<0.008)return;
+    lk=k;lo=op;
+    sec.style.opacity=op;
+    sec.classList.toggle('vis',op>0.01);
+    if(op<=0.01)return;
+    for(const it of items) it.classList.toggle('in', k>=+it.dataset.at);
+  }};
+}
+const transM=makeEditorial('s-trans'), trainM=makeEditorial('s-train');
 /* info de campañas (leída de la web Wix de Erik) */
 const INFO={
  mg_tech:{c:'Motion Systems',t:'Tech · Kinetic Typography',s:[['Trust','the emotion'],['Clarity','the need'],['AI','designed + animated']],d:'Motion language for SaaS and tech brands: data nodes assemble into type, communicating precision and momentum. Designed with Nano Banana, animated with Kling. Same-day turnaround per concept.'},
@@ -695,9 +774,9 @@ function onReady(){
 }
 vid.addEventListener('loadeddata',onReady);vid.addEventListener('canplay',onReady);setTimeout(onReady,4500);
 
-const PLATEAUS=[{t:DES_T,len:DL,m:desM},{t:GAL_T,len:GL,m:galM},{t:RK_T,len:PL,rack:true}];
+const PLATEAUS=[{t:TR_T,len:TRL,m:transM},{t:DES_T,len:DL,m:desM},{t:TN_T,len:TNL,m:trainM},{t:GAL_T,len:GL,m:galM},{t:RK_T,len:PL,rack:true}];
 {let _o=0;for(const pl of PLATEAUS){pl.uStart=pl.t+_o;pl.uEnd=pl.uStart+pl.len;_o+=pl.len;}}
-const TOTAL_FREEZE=DL+GL+PL;
+const TOTAL_FREEZE=TRL+DL+TNL+GL+PL;
 function progress(){const m=track.offsetHeight-innerHeight;return m>0?Math.min(1,Math.max(0,scrollY/m)):0}
 
 function countUp(id,to,ms=1200){const el=document.getElementById(id);if(!el)return;const s=performance.now();
