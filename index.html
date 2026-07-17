@@ -62,18 +62,18 @@ body{background:#04050a;color:var(--ink);font-family:var(--font);-webkit-font-sm
 #s-vortex .vtext{position:absolute;left:50%;top:50%;transform:translate(-50%,-50%);text-align:center;will-change:transform,filter}
 #s-vortex .vtext h1{font-size:clamp(30px,4.6vw,64px)}
 
-/* charts (data) */
-.charts{position:absolute;right:clamp(24px,6vw,110px);top:50%;transform:translateY(-50%);display:flex;flex-direction:column;gap:14px;width:min(340px,42vw)}
-.card{background:var(--panel);border:1px solid var(--stroke);border-radius:16px;padding:16px 18px;backdrop-filter:blur(9px);-webkit-backdrop-filter:blur(9px);box-shadow:0 20px 60px rgba(0,0,0,.4)}
+/* charts (data): centradas, protagonistas */
+.charts{position:absolute;left:50%;top:58%;transform:translate(-50%,-50%);display:grid;grid-template-columns:repeat(3,1fr);gap:18px;width:min(980px,92vw)}
+.card{background:var(--panel);border:1px solid var(--stroke);border-radius:18px;padding:22px 24px;backdrop-filter:blur(9px);-webkit-backdrop-filter:blur(9px);box-shadow:0 20px 60px rgba(0,0,0,.4)}
 .card .lab{font-size:11px;letter-spacing:.14em;text-transform:uppercase;color:var(--faint)}
-.card .big{font-size:32px;font-weight:600;letter-spacing:-.02em;margin-top:2px}
+.card .big{font-size:44px;font-weight:600;letter-spacing:-.02em;margin-top:2px}
 .card .big .u{font-size:16px;color:var(--dim);margin-left:4px}
-.bars{display:flex;align-items:flex-end;gap:9px;height:70px;margin-top:12px}
+.bars{display:flex;align-items:flex-end;gap:10px;height:96px;margin-top:14px}
 .bars i{flex:1;height:6%;border-radius:5px 5px 2px 2px;background:var(--grad);opacity:.9;transition:height 1.1s cubic-bezier(.22,1,.36,1)}
-.spark{width:100%;height:58px;margin-top:8px;display:block}
+.spark{width:100%;height:84px;margin-top:10px;display:block}
 .spark path.line{fill:none;stroke:url(#sg);stroke-width:2.5;stroke-linecap:round;stroke-dasharray:600;stroke-dashoffset:600;transition:stroke-dashoffset 1.5s ease}
 .spark path.area{fill:url(#ag);opacity:0;transition:opacity 1.2s ease .3s}
-.oring{width:66px;height:66px;flex:none}
+.oring{width:88px;height:88px;flex:none}
 .oring circle{fill:none;stroke-width:8;transform:rotate(-90deg);transform-origin:50% 50%}
 .oring .bg{stroke:rgba(255,255,255,.10)}
 .oring .fg{stroke:url(#sg);stroke-linecap:round;stroke-dasharray:176;stroke-dashoffset:176;transition:stroke-dashoffset 1.4s cubic-bezier(.22,1,.36,1)}
@@ -343,7 +343,7 @@ body.lb-open{overflow:hidden}
     <div class="inner">
       <div class="eyebrow fadeup">Erik S. Petersen · Creative Technologist</div>
       <h1 class="lq">Creative direction, <span class="g">powered by AI.</span></h1>
-      <p class="fadeup">80+ projects delivered. One person, one unified AI-driven system — content, growth, automation and creative direction.</p>
+      <p class="fadeup">80+ projects shipped. One operator running a full growth department: AI content engines, automation frameworks and creative direction that convert.</p>
     </div>
   </section>
 
@@ -352,7 +352,7 @@ body.lb-open{overflow:hidden}
     <div class="inner">
       <div class="eyebrow fadeup">01 — Strategy</div>
       <h1 class="lq">Every frame is a <span class="g">move.</span></h1>
-      <p class="fadeup">AI-first strategy that de-risks investment before a single pixel ships — ROAS ≥ 10× sustained across six industries.</p>
+      <p class="fadeup">AI-first strategy that de-risks budgets before a single pixel ships. ROAS sustained at 10×, cost per lead down to €5 in regulated markets.</p>
     </div>
   </section>
 
@@ -361,7 +361,7 @@ body.lb-open{overflow:hidden}
     <div class="hub">
       <div class="eyebrow fadeup">02 — One System</div>
       <h1 class="lq">Everything, <span class="g">unified.</span></h1>
-      <p class="fadeup">AI content · workflows · automations · CRM · paid media · creative direction — one loop that compounds.</p>
+      <p class="fadeup">Custom AI frameworks: viral-content engines, internal apps built with Claude Code, n8n and Make automations, CRM orchestration. One loop that compounds revenue.</p>
     </div>
   </section>
 
@@ -378,16 +378,16 @@ body.lb-open{overflow:hidden}
     <div class="inner">
       <div class="eyebrow fadeup">03 — Creative Direction</div>
       <h1 class="lq">Made to move <span class="g">people.</span></h1>
-      <p class="fadeup">Art direction, image and storytelling that turn attention into demand — 600K+ views in a single week.</p>
+      <p class="fadeup">Art direction and storytelling engineered for demand: 600K views in week one, +4,300% community growth in four months.</p>
     </div>
   </section>
 
   <!-- 6 DATA 49.8-55.4 -->
-  <section class="scene pos-left" id="s-data" data-t0="49.8" data-t1="55.4">
-    <div class="inner">
+  <section class="scene pos-center" id="s-data" data-t0="49.8" data-t1="55.4">
+    <div class="inner" style="top:20%">
       <div class="eyebrow fadeup">04 — Performance</div>
       <h1 class="lq">Decisions, in <span class="g">real time.</span></h1>
-      <p class="fadeup">Dashboards, KPI/OKR reporting and AI pipelines that turn raw data into direction.</p>
+      <p class="fadeup">Live dashboards and AI reporting pipelines. Every euro tracked, every creative iterated on data, every decision defensible in the boardroom.</p>
     </div>
     <div class="charts">
       <div class="card"><div class="lab">Conversion uplift</div><div class="big">+<span id="ct1">0</span><span class="u">%</span></div>
@@ -412,10 +412,10 @@ body.lb-open{overflow:hidden}
     </div>
     <div class="chips">
       <span class="chip"><b>Claude Code</b></span><span class="chip">Gemini</span><span class="chip">ChatGPT</span>
-      <span class="chip">Midjourney</span><span class="chip">Runway</span><span class="chip">ElevenLabs</span>
-      <span class="chip"><b>Zapier</b></span><span class="chip">Make</span><span class="chip">ManyChat</span>
-      <span class="chip"><b>HubSpot</b></span><span class="chip">Salesforce</span><span class="chip">Craft CMS</span><span class="chip">Stripe</span>
-      <span class="chip"><b>Meta Ads</b></span><span class="chip">Google Ads</span><span class="chip">Power BI</span>
+      <span class="chip"><b>Higgsfield</b></span><span class="chip">Kling</span><span class="chip">Nano Banana</span><span class="chip">Midjourney</span><span class="chip">Runway</span><span class="chip">MiniMax</span><span class="chip">ElevenLabs</span>
+      <span class="chip"><b>n8n</b></span><span class="chip">Zapier</span><span class="chip">Make</span><span class="chip">ManyChat</span><span class="chip">Airtable</span>
+      <span class="chip"><b>HubSpot</b></span><span class="chip">Salesforce</span><span class="chip">Stripe</span>
+      <span class="chip"><b>Meta Ads</b></span><span class="chip">Google Ads</span><span class="chip">GA4</span><span class="chip">Power BI</span>
       <span class="chip"><b>Premiere Pro</b></span><span class="chip">After Effects</span><span class="chip">DaVinci</span><span class="chip">Photoshop</span>
     </div>
   </section>
@@ -447,8 +447,9 @@ body.lb-open{overflow:hidden}
   <!-- 12 MOMENTUM (líneas) 109.8-115.2 -->
   <section class="scene pos-bottom" data-t0="109.8" data-t1="115.2">
     <div class="inner">
-      <div class="eyebrow fadeup">10 — Momentum</div>
-      <h1 class="lq">Always moving <span class="g">forward.</span></h1>
+      <div class="eyebrow fadeup">10 — AI Frameworks</div>
+      <h1 class="lq">Frameworks that <span class="g">ship.</span></h1>
+      <p class="fadeup">Viral-content engines that script, generate and publish on autopilot. Internal apps built with Claude Code in days, not quarters. Workflows that run your ops while you sleep.</p>
     </div>
   </section>
 </div>
@@ -466,9 +467,9 @@ body.lb-open{overflow:hidden}
 <!-- MASONRY: toda la fotografía, columnas que bajan con el scroll -->
 <section id="s-gal">
   <div class="gal-head">
-    <div class="eyebrow">08 — Photography</div>
-    <h1 class="lqx">Every frame <span class="g">counts.</span></h1>
-    <div class="gsub">Scroll to explore · click to view</div>
+    <div class="eyebrow">08 — Commercial Imagery</div>
+    <h1 class="lqx">Imagery that <span class="g">sells.</span></h1>
+    <div class="gsub">AI-generated campaigns, ready for market · click to view</div>
   </div>
   <div id="gcols"><div class="gcol"></div><div class="gcol"></div><div class="gcol gx"></div><div class="gcol gx"></div></div>
 </section>
@@ -482,20 +483,24 @@ body.lb-open{overflow:hidden}
     <div class="rksub">Scroll to browse · click to play</div>
   </div>
   <div id="rail">
-    <figure class="rcard" data-v="media/v/cintas.mp4"><div class="tilt"><img class="thumb" src="media/p/cintas.jpg" loading="lazy" decoding="async"><div class="mesh"></div><div class="scan"></div><span class="play">▶</span><figcaption><b>Percutti — Acero</b><span>Brand Film</span></figcaption></div></figure>
-    <figure class="rcard" data-v="media/v/steward.mp4"><div class="tilt"><img class="thumb" src="media/p/steward.jpg" loading="lazy" decoding="async"><div class="mesh"></div><div class="scan"></div><span class="play">▶</span><figcaption><b>Steward Productions</b><span>Brand Film</span></figcaption></div></figure>
-    <figure class="rcard" data-v="media/v/perlas.mp4"><div class="tilt"><img class="thumb" src="media/p/perlas.jpg" loading="lazy" decoding="async"><div class="mesh"></div><div class="scan"></div><span class="play">▶</span><figcaption><b>Perlas de Mallorca</b><span>Campaign</span></figcaption></div></figure>
-    <figure class="rcard" data-v="media/v/legno.mp4"><div class="tilt"><img class="thumb" src="media/p/legno.jpg" loading="lazy" decoding="async"><div class="mesh"></div><div class="scan"></div><span class="play">▶</span><figcaption><b>Percutti — Colección Legno</b><span>Product Film</span></figcaption></div></figure>
-    <figure class="rcard" data-v="media/v/lacolonia.mp4"><div class="tilt"><img class="thumb" src="media/p/lacolonia.jpg" loading="lazy" decoding="async"><div class="mesh"></div><div class="scan"></div><span class="play">▶</span><figcaption><b>La Colonia — Black Edition</b><span>Campaign</span></figcaption></div></figure>
-    <figure class="rcard" data-v="media/v/helio.mp4"><div class="tilt"><img class="thumb" src="media/p/helio.jpg" loading="lazy" decoding="async"><div class="mesh"></div><div class="scan"></div><span class="play">▶</span><figcaption><b>Helio × Carrefour</b><span>Commercial</span></figcaption></div></figure>
-    <figure class="rcard" data-v="media/v/n8n.mp4"><div class="tilt"><img class="thumb" src="media/p/n8n.jpg" loading="lazy" decoding="async"><div class="mesh"></div><div class="scan"></div><span class="play">▶</span><figcaption><b>n8n</b><span>Automation Film</span></figcaption></div></figure>
-    <figure class="rcard" data-v="media/v/guerrillero.mp4"><div class="tilt"><img class="thumb" src="media/p/guerrillero.jpg" loading="lazy" decoding="async"><div class="mesh"></div><div class="scan"></div><span class="play">▶</span><figcaption><b>El Guerrillero</b><span>Short Film</span></figcaption></div></figure>
-    <figure class="rcard" data-v="media/v/kitdigital.mp4"><div class="tilt"><img class="thumb" src="media/p/kitdigital.jpg" loading="lazy" decoding="async"><div class="mesh"></div><div class="scan"></div><span class="play">▶</span><figcaption><b>Kit Digital</b><span>Motion & CRM</span></figcaption></div></figure>
-    <figure class="rcard" data-v="media/v/reel.mp4"><div class="tilt"><img class="thumb" src="media/p/reel.jpg" loading="lazy" decoding="async"><div class="mesh"></div><div class="scan"></div><span class="play">▶</span><figcaption><b>Show Reel</b><span>Director's Cut</span></figcaption></div></figure>
-    <figure class="rcard" data-v="media/v/corpa.mp4"><div class="tilt"><img class="thumb" src="media/p/corpa.jpg" loading="lazy" decoding="async"><div class="mesh"></div><div class="scan"></div><span class="play">▶</span><figcaption><b>Ángel Corpa</b><span>Docudrama</span></figcaption></div></figure>
-    <figure class="rcard" data-v="media/v/makingof.mp4"><div class="tilt"><img class="thumb" src="media/p/makingof.jpg" loading="lazy" decoding="async"><div class="mesh"></div><div class="scan"></div><span class="play">▶</span><figcaption><b>Making Of</b><span>Behind the Scenes</span></figcaption></div></figure>
-    <figure class="rcard" data-v="media/v/auriculares.mp4"><div class="tilt"><img class="thumb" src="media/p/auriculares.jpg" loading="lazy" decoding="async"><div class="mesh"></div><div class="scan"></div><span class="play">▶</span><figcaption><b>Auriculares</b><span>Product Spot</span></figcaption></div></figure>
-    <figure class="rcard" data-v="media/v/testimonio.mp4"><div class="tilt"><img class="thumb" src="media/p/testimonio.jpg" loading="lazy" decoding="async"><div class="mesh"></div><div class="scan"></div><span class="play">▶</span><figcaption><b>Testimonial</b><span>Interview Film</span></figcaption></div></figure>
+    <figure class="rcard" data-v="media/v/mg_tech.mp4"><div class="tilt"><img class="thumb" src="media/p/mg_tech.webp" loading="lazy" decoding="async" alt=""><div class="mesh"></div><div class="scan"></div><span class="play">&#9654;</span><figcaption><b>Motion System &middot; Tech</b><span>Kinetic Typography</span></figcaption></div></figure>
+    <figure class="rcard" data-v="media/v/mg_retail.mp4"><div class="tilt"><img class="thumb" src="media/p/mg_retail.webp" loading="lazy" decoding="async" alt=""><div class="mesh"></div><div class="scan"></div><span class="play">&#9654;</span><figcaption><b>Motion System &middot; Retail</b><span>Product Energy</span></figcaption></div></figure>
+    <figure class="rcard" data-v="media/v/mg_luxury.mp4"><div class="tilt"><img class="thumb" src="media/p/mg_luxury.webp" loading="lazy" decoding="async" alt=""><div class="mesh"></div><div class="scan"></div><span class="play">&#9654;</span><figcaption><b>Motion System &middot; Luxury</b><span>Particle Reveal</span></figcaption></div></figure>
+    <figure class="rcard" data-v="media/v/mg_wellness.mp4"><div class="tilt"><img class="thumb" src="media/p/mg_wellness.webp" loading="lazy" decoding="async" alt=""><div class="mesh"></div><div class="scan"></div><span class="play">&#9654;</span><figcaption><b>Motion System &middot; Wellness</b><span>Organic Calm</span></figcaption></div></figure>
+    <figure class="rcard" data-v="media/v/cintas.mp4"><div class="tilt"><img class="thumb" src="media/p/cintas.webp" loading="lazy" decoding="async"><div class="mesh"></div><div class="scan"></div><span class="play">▶</span><figcaption><b>Percutti — Acero</b><span>Brand Film</span></figcaption></div></figure>
+    <figure class="rcard" data-v="media/v/steward.mp4"><div class="tilt"><img class="thumb" src="media/p/steward.webp" loading="lazy" decoding="async"><div class="mesh"></div><div class="scan"></div><span class="play">▶</span><figcaption><b>Steward Productions</b><span>Brand Film</span></figcaption></div></figure>
+    <figure class="rcard" data-v="media/v/perlas.mp4"><div class="tilt"><img class="thumb" src="media/p/perlas.webp" loading="lazy" decoding="async"><div class="mesh"></div><div class="scan"></div><span class="play">▶</span><figcaption><b>Perlas de Mallorca</b><span>Campaign</span></figcaption></div></figure>
+    <figure class="rcard" data-v="media/v/legno.mp4"><div class="tilt"><img class="thumb" src="media/p/legno.webp" loading="lazy" decoding="async"><div class="mesh"></div><div class="scan"></div><span class="play">▶</span><figcaption><b>Percutti — Colección Legno</b><span>Product Film</span></figcaption></div></figure>
+    <figure class="rcard" data-v="media/v/lacolonia.mp4"><div class="tilt"><img class="thumb" src="media/p/lacolonia.webp" loading="lazy" decoding="async"><div class="mesh"></div><div class="scan"></div><span class="play">▶</span><figcaption><b>La Colonia — Black Edition</b><span>Campaign</span></figcaption></div></figure>
+    <figure class="rcard" data-v="media/v/helio.mp4"><div class="tilt"><img class="thumb" src="media/p/helio.webp" loading="lazy" decoding="async"><div class="mesh"></div><div class="scan"></div><span class="play">▶</span><figcaption><b>Helio × Carrefour</b><span>Commercial</span></figcaption></div></figure>
+    <figure class="rcard" data-v="media/v/n8n.mp4"><div class="tilt"><img class="thumb" src="media/p/n8n.webp" loading="lazy" decoding="async"><div class="mesh"></div><div class="scan"></div><span class="play">▶</span><figcaption><b>n8n</b><span>Automation Film</span></figcaption></div></figure>
+    <figure class="rcard" data-v="media/v/guerrillero.mp4"><div class="tilt"><img class="thumb" src="media/p/guerrillero.webp" loading="lazy" decoding="async"><div class="mesh"></div><div class="scan"></div><span class="play">▶</span><figcaption><b>El Guerrillero</b><span>Short Film</span></figcaption></div></figure>
+    <figure class="rcard" data-v="media/v/kitdigital.mp4"><div class="tilt"><img class="thumb" src="media/p/kitdigital.webp" loading="lazy" decoding="async"><div class="mesh"></div><div class="scan"></div><span class="play">▶</span><figcaption><b>Kit Digital</b><span>Motion & CRM</span></figcaption></div></figure>
+    <figure class="rcard" data-v="media/v/reel.mp4"><div class="tilt"><img class="thumb" src="media/p/reel.webp" loading="lazy" decoding="async"><div class="mesh"></div><div class="scan"></div><span class="play">▶</span><figcaption><b>Show Reel</b><span>Director's Cut</span></figcaption></div></figure>
+    <figure class="rcard" data-v="media/v/corpa.mp4"><div class="tilt"><img class="thumb" src="media/p/corpa.webp" loading="lazy" decoding="async"><div class="mesh"></div><div class="scan"></div><span class="play">▶</span><figcaption><b>Ángel Corpa</b><span>Docudrama</span></figcaption></div></figure>
+    <figure class="rcard" data-v="media/v/makingof.mp4"><div class="tilt"><img class="thumb" src="media/p/makingof.webp" loading="lazy" decoding="async"><div class="mesh"></div><div class="scan"></div><span class="play">▶</span><figcaption><b>Making Of</b><span>Behind the Scenes</span></figcaption></div></figure>
+    <figure class="rcard" data-v="media/v/auriculares.mp4"><div class="tilt"><img class="thumb" src="media/p/auriculares.webp" loading="lazy" decoding="async"><div class="mesh"></div><div class="scan"></div><span class="play">▶</span><figcaption><b>Auriculares</b><span>Product Spot</span></figcaption></div></figure>
+    <figure class="rcard" data-v="media/v/testimonio.mp4"><div class="tilt"><img class="thumb" src="media/p/testimonio.webp" loading="lazy" decoding="async"><div class="mesh"></div><div class="scan"></div><span class="play">▶</span><figcaption><b>Testimonial</b><span>Interview Film</span></figcaption></div></figure>
   </div>
 </section>
 
@@ -503,7 +508,7 @@ body.lb-open{overflow:hidden}
 <div id="cta"><div class="wrap">
   <div class="eb">Let's play</div>
   <h1>Ready to build your unfair advantage?</h1>
-  <div class="sub">AI content · automation · growth — unified by one creative technologist.</div>
+  <div class="sub">AI content engines Â· automation frameworks Â· paid growth. One hire, a whole department’s output.</div>
   <div class="btnrow">
     <a class="btn" href="mailto:erikpetersenh0@gmail.com">Get in touch</a>
     <a class="btn ghost" href="https://www.linkedin.com/in/eriks-petersen/" target="_blank" rel="noopener">LinkedIn ↗</a>
@@ -531,9 +536,9 @@ const counted={};
 /* THE VAULT: meseta de scroll — el vídeo se congela en RK_T mientras la galería avanza */
 const DES_T=62, DL=16, GAL_T=92.6, GL=16, RK_T=96.2, PL=26;
 /* ===== MASONRY (meseta 2 en GAL_T): columnas parallax ===== */
-const GAL_IMGS=["IMGP1078.jpg", "IMGP1083.jpg", "IMGP1109insta.jpg", "IMGP1791.jpg", "IMGP2514.jpg", "IMGP2518-7b2871f8bc414974a4b02e5b47164820.jpg", "IMGP2518.jpg", "IMGP2530.jpg", "IMGP2582.jpg", "IMGP2587.jpg", "IMGP2625.jpg", "IMGP2859-Pano.jpg", "IMGP4238.jpg", "IMGP4516-HDR.jpg", "IMGP4555-Pano.jpg", "IMGP4571-HDR.jpg", "IMGP4572-HDR.jpg", "_IMG3713.jpg", "_IMG3716.jpg", "_IMG3741.jpg", "_IMG3898.jpg", "_IMG3908.jpg", "_IMG3917.jpg", "_IMG3943.jpg", "_IMG3950.jpg", "_IMG3981.jpg", "_IMG3987.jpg", "_IMG4013.jpg", "_IMG4016.jpg", "_IMG4060.jpg", "_IMG4083.jpg", "_IMG4114.jpg", "_IMG4141.jpg", "_IMG4184.jpg", "_IMG4189.jpg", "_IMG4246.jpg", "_IMG4265.jpg", "_IMG4280.jpg", "_IMG4385.jpg", "_IMG5024.jpg", "_IMG5050.jpg", "_IMG5062.jpg", "_IMG5439.jpg", "_IMG5481.jpg", "_IMG5497.jpg", "_IMG5571.jpg", "_IMG5871ins.jpg", "_IMG6001ins.jpg", "_IMG6120ins.jpg", "_IMG6137.jpg", "_IMG6157ins.jpg", "_IMG6319ins.jpg", "_IMG6328ins.jpg", "_IMG6422ins.jpg", "_IMG6449ins.jpg", "_IMG6580ins.jpg", "_IMG6591ins.jpg", "_IMG6607Clase.jpg", "_IMG6627.jpg", "_IMG6638.jpg", "_IMG7210.jpg", "_IMG7396i.jpg", "_IMG7480i.jpg", "_IMG7552i.jpg", "_IMG7571i.jpg", "_IMG7577i.jpg", "_IMG7587i.jpg", "_IMG8646.jpg", "_IMG8651.jpg", "_IMG8656.jpg", "_IMG8667-2.jpg", "_IMG8667.jpg", "_IMG8682-2.jpg", "_IMG8682.jpg", "_IMG8685-2.jpg", "_IMG8685.jpg", "_IMG8690-2.jpg", "_IMG8690.jpg", "_IMG8703-2.jpg", "_IMG8703.jpg", "_IMG8713.jpg", "_IMG8734.jpg", "_IMG8745.jpg", "_IMG8748.jpg", "_IMG8789.jpg", "_IMG8793.jpg", "_IMG8801.jpg", "_IMG8811.jpg", "_IMG8910.jpg", "_IMG8915.jpg", "_IMG8959-2.jpg", "_IMG8963.jpg", "_IMG9100.jpg", "_IMG9119.jpg", "_IMG9144.jpg", "_IMG9255.jpg", "_IMG9267.jpg", "_IMG9270.jpg", "_IMG9343.jpg", "_IMG9359.jpg", "_IMG9380.jpg", "_IMG9385.jpg", "_IMG9445.jpg", "_IMG9507.jpg", "_IMG9523.jpg", "_MG_2072.jpg", "_MG_2173.jpg", "_MG_4756Clase.jpg", "_MG_4789ins.jpg", "_MG_6868.jpg", "_MG_6876.jpg", "_MG_7290.jpg", "_MG_7292.jpg", "_MG_7520.jpg", "_MG_7709.jpg", "_MG_9452.jpg", "_MG_9590.jpg", "modelo_pd.jpg"];
+const GAL_IMGS=["com_fashion_coat.webp", "com_prod_handbag.webp", "com_prod_watch.webp", "com_fashion_gown.webp", "com_prod_sneakers.webp", "com_prod_serum.webp", "com_fashion_denim.webp", "com_prod_chocolate.webp", "com_prod_phone.webp", "com_fashion_suit.webp", "com_prod_necklace.webp", "com_prod_vase.webp", "com_fashion_athletic.webp", "com_prod_glasses.webp", "com_prod_earbuds.webp", "com_prod_perfume.webp"];
 const GSPEED=[1,.8,1.15,.88];
-const DES_IMGS=["ad_aurel.jpg","design1.jpg","ad_volta.jpg","ad_lume.jpg","design2.jpg","ad_pulse.jpg","ad_kind.jpg","design3.jpg","ad_blackoak.jpg","ad_sono.jpg","design4.jpg","ad_casanegra.jpg","ad_solaris.jpg","design5.jpg","ad_forge.jpg","ad_noir.jpg","design6.jpg","ad_oree.jpg","ad_neura.jpg","ad_azul.jpg","ad_stride.jpg"];
+const DES_IMGS=["ad_aurel.webp","design1.webp","ad_volta.webp","ad_lume.webp","design2.webp","ad_pulse.webp","ad_kind.webp","design3.webp","ad_blackoak.webp","ad_sono.webp","design4.webp","ad_casanegra.webp","ad_solaris.webp","design5.webp","ad_forge.webp","ad_noir.webp","design6.webp","ad_oree.webp","ad_neura.webp","ad_azul.webp","ad_stride.webp"];
 function makeMason(secId){
   const sec=document.getElementById(secId);
   const cols=[...sec.querySelectorAll('.gcol')];
@@ -567,6 +572,10 @@ function makeMason(secId){
 const desM=makeMason('s-des'), galM=makeMason('s-gal');
 /* info de campañas (leída de la web Wix de Erik) */
 const INFO={
+ mg_tech:{c:'Motion Systems',t:'Tech · Kinetic Typography',s:[['Trust','the emotion'],['Clarity','the need'],['AI','designed + animated']],d:'Motion language for SaaS and tech brands: data nodes assemble into type, communicating precision and momentum. Designed with Nano Banana, animated with Kling. Same-day turnaround per concept.'},
+ mg_retail:{c:'Motion Systems',t:'Retail · Product Energy',s:[['Desire','the emotion'],['Urgency','the need'],['9:16','ready for paid']],d:'High-energy motion for ecommerce drops and promos: spring physics, confetti bursts, bold type. Built to stop the scroll in paid social feeds.'},
+ mg_luxury:{c:'Motion Systems',t:'Luxury · Particle Reveal',s:[['Aspiration','the emotion'],['Status','the need'],['Brand','reveal system']],d:'Refined particle choreography for premium brands: golden dust converges into the mark. Slow, deliberate, expensive-feeling. Full reveal system deliverable in days.'},
+ mg_wellness:{c:'Motion Systems',t:'Wellness · Organic Calm',s:[['Calm','the emotion'],['Care','the need'],['Loop','seamless ambient']],d:'Breathing organic gradients for health and wellness brands: soft morphing shapes that soothe rather than shout. Ambient loops for web, waiting rooms and social.'},
  lacolonia:{c:'Percutti · La Colonia',t:'Black Edition — "Bienvenido 2023"',s:[['600K','views · week 1'],['<72h','stock sell-out'],['4','spots']],d:'New Year campaign for supermarket chain La Colonia (LATAM) under the concept "The luxury of cooking like a Chef". Full 360º mix — TV, YouTube, paid & organic social and in-store activations. Four pieces (30s TV spot, 15s bumper, 2:30 tutorial), two shooting days with synced dual cameras; direction, edit, grade and culinary Foley in DaVinci Resolve.'},
  legno:{c:'Percutti',t:'Colección Legno',s:[['360º','campaign mix'],['2','shoot days']],d:'Product film for Percutti\'s Legno cookware collection, produced within the same retail program as the La Colonia campaign — concept, direction, product cinematography, edit and grade.'},
  cintas:{c:'Percutti',t:'Acero — Brand Film',s:[['4','deliverables'],['100%','in-house post']],d:'Brand film for the steel cookware line — direction, lighting and post, designed to run across TV bumpers and paid social.'},
