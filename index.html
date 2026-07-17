@@ -7,7 +7,7 @@
 <style>
 /* ====== EDITA COPY: busca las .scene ====== */
 :root{
-  --track: 1840vh;
+  --track: 1980vh;
   --ink:#eaf0ff; --dim:rgba(234,240,255,.62); --faint:rgba(234,240,255,.40);
   --grad:linear-gradient(90deg,#5b8cff 0%,#8a5bff 35%,#c04bff 65%,#ff7a3d 100%);
   --panel:rgba(12,14,22,.42); --stroke:rgba(255,255,255,.10);
@@ -181,9 +181,18 @@ body{background:#04050a;color:var(--ink);font-family:var(--font);-webkit-font-sm
 .gitem:hover{transform:scale(1.035);box-shadow:0 18px 55px rgba(100,85,230,.5)}
 .gitem img{width:100%;display:block}
 /* ===== SECCIONES EDITORIALES (mesetas de narrativa) ===== */
-#s-trans,#s-train{position:fixed;inset:0;z-index:3;opacity:0;visibility:hidden;pointer-events:none;overflow:hidden}
-#s-trans.vis,#s-train.vis{visibility:visible}
-#s-trans::before,#s-train::before{content:"";position:absolute;inset:0;background:rgba(3,4,10,.8)}
+#s-trans,#s-train,#s-growth{position:fixed;inset:0;z-index:3;opacity:0;visibility:hidden;pointer-events:none;overflow:hidden;background:#f5f5f9;color:#0c0e1a}
+#s-trans.vis,#s-train.vis,#s-growth.vis{visibility:visible}
+.edb{position:absolute;border-radius:50%;filter:blur(60px);opacity:.4;will-change:transform;transform:translateZ(0);animation:eddrift 16s ease-in-out infinite alternate}
+@keyframes eddrift{from{transform:translate3d(0,0,0) scale(1)}to{transform:translate3d(4vw,-3vh,0) scale(1.12)}}
+#s-trans:not(.on) .edb,#s-train:not(.on) .edb,#s-growth:not(.on) .edb{animation-play-state:paused}
+#s-growth .b1{width:48vw;height:48vw;right:-14vw;top:-16vh;background:radial-gradient(circle,rgba(91,140,255,.55),rgba(138,91,255,.35) 55%,transparent 75%)}
+#s-growth .b2{width:34vw;height:34vw;left:-10vw;bottom:-12vh;background:radial-gradient(circle,rgba(255,122,61,.4),transparent 70%)}
+#s-trans .b1{width:46vw;height:46vw;left:-12vw;top:-14vh;background:radial-gradient(circle,rgba(255,122,61,.45),rgba(255,95,168,.3) 55%,transparent 75%)}
+#s-trans .b2{width:36vw;height:36vw;right:-10vw;bottom:-14vh;background:radial-gradient(circle,rgba(91,140,255,.4),transparent 70%)}
+#s-train .b1{width:44vw;height:44vw;right:-12vw;bottom:-16vh;background:radial-gradient(circle,rgba(192,75,255,.4),rgba(91,140,255,.3) 55%,transparent 75%)}
+#s-train .b2{width:30vw;height:30vw;left:-8vw;top:-10vh;background:radial-gradient(circle,rgba(255,179,122,.4),transparent 70%)}
+
 .ed-wrap{position:absolute;left:50%;top:50%;transform:translate(-50%,-50%);width:min(1060px,90vw);max-height:92vh;overflow:hidden}
 .ed-wrap .eyebrow{margin-bottom:12px}
 .ed-wrap h1{font-size:clamp(30px,4vw,52px);font-weight:600;letter-spacing:-.025em;line-height:1.06;text-shadow:0 2px 40px rgba(0,0,0,.6)}
@@ -205,6 +214,14 @@ body{background:#04050a;color:var(--ink);font-family:var(--font);-webkit-font-sm
   .ed-wrap{width:92vw}
   .ed-wrap .lede{font-size:13px}
 }
+
+/* overrides banner blanco (especificidad > .ed-wrap) */
+.edw .ed-wrap h1{color:#0c0e1a;text-shadow:none}
+.edw .ed-wrap .lede,.edw .ed-wrap .case p,.edw .ed-wrap .tstat .c{color:rgba(12,14,26,.66)}
+.edw .ed-wrap .case{border-top:1px solid rgba(12,14,26,.12)}
+.edw .ed-wrap .case h3{color:#0c0e1a}
+.edw .ed-wrap .case .num small{color:rgba(12,14,26,.45);-webkit-text-fill-color:rgba(12,14,26,.45)}
+.edw .ed-wrap .ed-note{color:#0c0e1a;border-top:1px solid rgba(12,14,26,.12)}
 /* lightbox con panel de campaña */
 #lb{position:fixed;inset:0;z-index:30;background:rgba(2,3,8,.94);display:none;align-items:center;justify-content:center;padding:3vh 3vw}
 #lb.open{display:flex}
@@ -277,7 +294,7 @@ body.lb-open{overflow:hidden}
 
 /* ================= MÓVIL ≤620px ================= */
 @media(max-width:620px){
-  :root{--track:2100vh}
+  :root{--track:2260vh}
   #dots{display:none}
 
   /* texto genérico: ancho completo, abajo, escalado; scrims inferiores */
@@ -479,8 +496,37 @@ body.lb-open{overflow:hidden}
   </section>
 </div>
 
+<!-- EDITORIAL 0: growth engineering (SEM/SEO/escalado) -->
+<section id="s-growth" class="edw"><div class="edb b1"></div><div class="edb b2"></div>
+  <div class="ed-wrap">
+    <div class="eyebrow rv" data-at="0.02">Performance &amp; Growth</div>
+    <h1 class="rv" data-at="0.04">Built to scale. Priced to <span class="g">convert.</span></h1>
+    <p class="lede rv" data-at="0.1">Paid growth is an engineering problem: measure, iterate, scale what compounds. I run SEM and paid social as one system, wired end to end into analytics.</p>
+    <div class="case rv" data-at="0.24">
+      <div class="num">9.2%<small>CTR on Google Ads</small></div>
+      <div><h3>SEM that reads intent, not keywords</h3>
+      <p>Search and Discovery campaigns with intent-mapped keyword architecture and ad copy tested at scale. Benchmark in regulated legal: 1.5%. Quality Scores of 9-10 drive the auction price down for every click after.</p></div>
+    </div>
+    <div class="case rv" data-at="0.42">
+      <div class="num">11.4%<small>landing conversion rate</small></div>
+      <div><h3>Conversion-engineered landings</h3>
+      <p>Message-matched pages per ad group: metadata and structured data tuned, Core Web Vitals in the green, forms stripped to the decision. Industry average sits at 2-3%. The gap is the margin.</p></div>
+    </div>
+    <div class="case rv" data-at="0.6">
+      <div class="num">6&rarr;38<small>campaigns, horizontal scale</small></div>
+      <div><h3>Horizontal scaling without CAC decay</h3>
+      <p>Winning angles cloned across markets, audiences and platforms with a naming and testing system that keeps attribution clean. Growth by surface area, not by burn.</p></div>
+    </div>
+    <div class="case rv" data-at="0.76">
+      <div class="num">5&times;<small>budget &middot; CAC &minus;18%</small></div>
+      <div><h3>Vertical scaling on proven winners</h3>
+      <p>Budgets multiplied on validated creatives while cost per acquisition kept falling. Scaling rules defined in advance: thresholds, kill-criteria, and SEO foundations underneath so the traffic you win is traffic you own.</p></div>
+    </div>
+  </div>
+</section>
+
 <!-- EDITORIAL 1: transformación de equipos -->
-<section id="s-trans">
+<section id="s-trans" class="edw"><div class="edb b1"></div><div class="edb b2"></div>
   <div class="ed-wrap">
     <div class="eyebrow rv" data-at="0.02">AI Transformation</div>
     <h1 class="rv" data-at="0.04">I rebuild how teams <span class="g">produce.</span></h1>
@@ -504,7 +550,7 @@ body.lb-open{overflow:hidden}
 </section>
 
 <!-- EDITORIAL 2: formación IA -->
-<section id="s-train">
+<section id="s-train" class="edw"><div class="edb b1"></div><div class="edb b2"></div>
   <div class="ed-wrap">
     <div class="eyebrow rv" data-at="0.02">AI Enablement &amp; Training</div>
     <h1 class="rv" data-at="0.04">Teams that stay <span class="g">transformed.</span></h1>
@@ -599,7 +645,7 @@ const vid=document.getElementById('vid'),track=document.getElementById('track'),
 let DUR=125.6,targetT=0,curT=0,ready=false;
 const counted={};
 /* THE VAULT: meseta de scroll — el vídeo se congela en RK_T mientras la galería avanza */
-const TR_T=57.6, TRL=15, DES_T=62, DL=16, TN_T=87.6, TNL=13, GAL_T=92.6, GL=16, RK_T=96.2, PL=26;
+const GR_T=16.4, GRL=14, TR_T=57.6, TRL=15, DES_T=62, DL=16, TN_T=87.6, TNL=13, GAL_T=92.6, GL=16, RK_T=96.2, PL=26;
 /* ===== MASONRY (meseta 2 en GAL_T): columnas parallax ===== */
 const GAL_IMGS=["com_fashion_coat.webp", "com_prod_handbag.webp", "com_prod_watch.webp", "com_fashion_gown.webp", "com_prod_sneakers.webp", "com_prod_serum.webp", "com_fashion_denim.webp", "com_prod_chocolate.webp", "com_prod_phone.webp", "com_fashion_suit.webp", "com_prod_necklace.webp", "com_prod_vase.webp", "com_fashion_athletic.webp", "com_prod_glasses.webp", "com_prod_earbuds.webp", "com_prod_perfume.webp"];
 const GSPEED=[1,.8,1.15,.88];
@@ -644,11 +690,12 @@ function makeEditorial(secId){
     lk=k;lo=op;
     sec.style.opacity=op;
     sec.classList.toggle('vis',op>0.01);
+    sec.classList.toggle('on',op>0.6);
     if(op<=0.01)return;
     for(const it of items) it.classList.toggle('in', k>=+it.dataset.at);
   }};
 }
-const transM=makeEditorial('s-trans'), trainM=makeEditorial('s-train');
+const transM=makeEditorial('s-trans'), trainM=makeEditorial('s-train'), growthM=makeEditorial('s-growth');
 /* info de campañas (leída de la web Wix de Erik) */
 const INFO={
  mg_tech:{c:'Motion Systems',t:'Tech · Kinetic Typography',s:[['Trust','the emotion'],['Clarity','the need'],['AI','designed + animated']],d:'Motion language for SaaS and tech brands: data nodes assemble into type, communicating precision and momentum. Designed with Nano Banana, animated with Kling. Same-day turnaround per concept.'},
@@ -687,7 +734,6 @@ function renderRack(rk,op){
   rack.style.opacity=op;
   rack.classList.toggle('vis',op>0.01);
   rack.classList.toggle('on',op>0.6);
-  dotsWrap.style.opacity=1-op;
   if(op<=0.01)return;
   const vw=innerWidth, M=vw*0.5-CW*0.5;
   const railX=M-rk*(railW-CW);
@@ -774,9 +820,9 @@ function onReady(){
 }
 vid.addEventListener('loadeddata',onReady);vid.addEventListener('canplay',onReady);setTimeout(onReady,4500);
 
-const PLATEAUS=[{t:TR_T,len:TRL,m:transM},{t:DES_T,len:DL,m:desM},{t:TN_T,len:TNL,m:trainM},{t:GAL_T,len:GL,m:galM},{t:RK_T,len:PL,rack:true}];
+const PLATEAUS=[{t:GR_T,len:GRL,m:growthM},{t:TR_T,len:TRL,m:transM},{t:DES_T,len:DL,m:desM},{t:TN_T,len:TNL,m:trainM},{t:GAL_T,len:GL,m:galM},{t:RK_T,len:PL,rack:true}];
 {let _o=0;for(const pl of PLATEAUS){pl.uStart=pl.t+_o;pl.uEnd=pl.uStart+pl.len;_o+=pl.len;}}
-const TOTAL_FREEZE=TRL+DL+TNL+GL+PL;
+const TOTAL_FREEZE=GRL+TRL+DL+TNL+GL+PL;
 function progress(){const m=track.offsetHeight-innerHeight;return m>0?Math.min(1,Math.max(0,scrollY/m)):0}
 
 function countUp(id,to,ms=1200){const el=document.getElementById(id);if(!el)return;const s=performance.now();
@@ -789,11 +835,14 @@ function loop(){
   let tt=U;
   for(const pl of PLATEAUS){ if(U>=pl.uEnd) tt-=pl.len; else if(U>=pl.uStart){tt=pl.t;break;} else break; }
   targetT=tt;
+  let plOp=0;
   for(const pl of PLATEAUS){
     const k=U<=pl.uStart?0:U>=pl.uEnd?1:(U-pl.uStart)/pl.len;
     const op=Math.max(0,Math.min(smooth(pl.uStart-1.6,pl.uStart+0.4,U),1-smooth(pl.uEnd-0.4,pl.uEnd+1.6,U)));
+    plOp=Math.max(plOp,op);
     if(pl.rack)renderRack(k,op); else pl.m.render(k,op);
   }
+  dotsWrap.style.opacity=1-plOp;
   curT+=(targetT-curT)*0.18;if(Math.abs(targetT-curT)<0.004)curT=targetT;
   /* el vídeo es 30fps: no tiene sentido buscar más fino que un frame (0.033s) */
   if(ready&&Math.abs(vid.currentTime-curT)>0.034){try{vid.currentTime=curT}catch(e){}}
