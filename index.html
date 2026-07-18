@@ -365,11 +365,33 @@ body.lb-open{overflow:hidden}
   .scene .inner{bottom:9vh}
   .charts{bottom:4vh}
 }
+/* ===== hidden nav menu (hamburger) ===== */
+#nav-t{position:fixed;top:16px;right:16px;z-index:28;width:46px;height:46px;border:0;border-radius:13px;
+  background:rgba(8,10,20,.34);backdrop-filter:blur(9px);-webkit-backdrop-filter:blur(9px);
+  display:flex;flex-direction:column;gap:5px;align-items:center;justify-content:center;cursor:pointer;
+  opacity:.5;transition:opacity .25s ease,background .25s ease}
+#nav-t:hover{opacity:1;background:rgba(22,24,44,.6)}
+#nav-t span{width:20px;height:2px;background:#ecedf6;border-radius:2px;transition:transform .32s cubic-bezier(.7,0,.2,1),opacity .2s}
+body.nav-open #nav-t{opacity:1}
+body.nav-open #nav-t span:nth-child(1){transform:translateY(7px) rotate(45deg)}
+body.nav-open #nav-t span:nth-child(2){opacity:0}
+body.nav-open #nav-t span:nth-child(3){transform:translateY(-7px) rotate(-45deg)}
+body.lb-open #nav-t{opacity:0;pointer-events:none}
+#nav-p{position:fixed;inset:0;z-index:27;background:rgba(4,5,10,.9);backdrop-filter:blur(16px);-webkit-backdrop-filter:blur(16px);
+  display:flex;align-items:center;justify-content:center;opacity:0;pointer-events:none;transition:opacity .32s ease}
+body.nav-open #nav-p{opacity:1;pointer-events:auto}
+.nav-in{display:flex;flex-direction:column;gap:2px;text-align:center;transform:translateY(14px);transition:transform .4s cubic-bezier(.2,.7,.2,1)}
+body.nav-open .nav-in{transform:translateY(0)}
+.nav-in .nlab{font-size:11px;letter-spacing:.34em;color:#6f7284;text-transform:uppercase;margin-bottom:18px}
+.nav-in a{font-family:var(--font);font-size:clamp(21px,4.4vw,38px);font-weight:600;line-height:1.28;color:#c7c9d6;
+  letter-spacing:-.01em;cursor:pointer;padding:2px 20px;text-decoration:none;transition:color .2s,transform .2s;background:transparent}
+.nav-in a:hover{color:#fff;transform:translateX(3px)}
+.nav-in a .g{background:var(--grad,linear-gradient(90deg,#5b8cff,#c04bff,#ff7a3d));-webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent}
 </style>
 </head>
 <body>
 
-<div id="stage"><video id="vid" muted playsinline preload="auto" src="maxima_scroll_web.mp4"></video></div>
+<div id="stage"><video id="vid" muted playsinline preload="auto"></video></div>
 <div id="vignette"></div><div id="grain"></div>
 <audio id="amb" loop preload="none" src="maxima_audio.m4a"></audio>
 
@@ -641,6 +663,18 @@ body.lb-open{overflow:hidden}
 <div id="hint">Scroll<span class="c">⌄</span></div>
 <button id="snd" title="Sound">🔇</button>
 <div id="load"><div class="ring2"></div><span>Loading experience</span></div>
+<button id="nav-t" aria-label="Menu"><span></span><span></span><span></span></button>
+<nav id="nav-p"><div class="nav-in">
+  <div class="nlab">Erik S. Petersen</div>
+  <a data-nav="intro">Intro</a>
+  <a data-nav="growth">Performance &amp; <span class="g">Growth</span></a>
+  <a data-nav="trans">AI <span class="g">Transformation</span></a>
+  <a data-nav="des">Selected <span class="g">Work</span></a>
+  <a data-nav="train">AI <span class="g">Enablement</span></a>
+  <a data-nav="gal">Commercial <span class="g">Imagery</span></a>
+  <a data-nav="rack">The <span class="g">Vault</span></a>
+  <a data-nav="contact">Get in <span class="g">touch</span></a>
+</div></nav>
 
 <script>
 const vid=document.getElementById('vid'),track=document.getElementById('track'),bar=document.getElementById('bar'),
@@ -733,7 +767,17 @@ function layoutRail(){
   railW=rcards.length*(CW+GAP)-GAP;
   rcards.forEach((c,i)=>{c.dataset.x=i*(CW+GAP)});
 }
-addEventListener('resize',layoutRail);
+/* preserve the virtual scroll position across viewport changes (mobile rotate / URL-bar)
+   so opening a video + rotating + closing keeps you on the same slide */
+let _p=0;
+function preserveScroll(){
+  const p=_p;                     // progress captured by loop() BEFORE this resize
+  layoutRail();
+  const apply=()=>{const mx=track.offsetHeight-innerHeight; if(mx>0) window.scrollTo(0,p*mx);};
+  apply(); requestAnimationFrame(apply); setTimeout(apply,260);
+}
+addEventListener('resize',preserveScroll);
+addEventListener('orientationchange',()=>setTimeout(preserveScroll,60));
 let _lastRk=-1,_lastOp=-1;
 function renderRack(rk,op){
   /* skip total si nada cambió (scroll parado) */
@@ -826,7 +870,11 @@ function onReady(){
   layoutRail();desM.populate(DES_IMGS,'media/d/');galM.populate(GAL_IMGS.filter(f=>!/-[0-9a-f]{32}\./.test(f)&&!/-\d\.jpg$/.test(f)),'media/g/');
   requestAnimationFrame(loop);
 }
-vid.addEventListener('loadeddata',onReady);vid.addEventListener('canplay',onReady);setTimeout(onReady,4500);
+vid.addEventListener('loadeddata',onReady);vid.addEventListener('canplay',onReady);
+/* pick a light-weight source per device: 640×360 on phones, 720p on desktop (both re-encoded
+   with no B-frames + dense keyframes for cheap scroll-scrubbing). chosen once, never swapped. */
+vid.src = matchMedia('(max-width:820px)').matches ? 'maxima_scroll_web_m.mp4' : 'maxima_scroll_web.mp4';
+setTimeout(onReady,4500);
 
 const PLATEAUS=[{t:GR_T,len:GRL,m:growthM},{t:TR_T,len:TRL,m:transM},{t:DES_T,len:DL,m:desM},{t:TN_T,len:TNL,m:trainM},{t:GAL_T,len:GL,m:galM},{t:RK_T,len:PL,rack:true}];
 {let _o=0;for(const pl of PLATEAUS){pl.uStart=pl.t+_o;pl.uEnd=pl.uStart+pl.len;_o+=pl.len;}}
@@ -837,7 +885,7 @@ function countUp(id,to,ms=1200){const el=document.getElementById(id);if(!el)retu
   const st=n=>{const k=Math.min(1,(n-s)/ms);el.textContent=Math.round(to*(k*k*(3-2*k)));if(k<1)requestAnimationFrame(st)};requestAnimationFrame(st)}
 
 function loop(){
-  const p=progress();
+  const p=progress(); _p=p;
   /* mapeo con TRES mesetas genéricas: diseños (DES_T) · fotos (GAL_T) · vault (RK_T) */
   const U=p*(DUR+TOTAL_FREEZE);
   let tt=U;
@@ -900,6 +948,26 @@ snd.addEventListener('click',()=>{
   if(amb.paused){amb.volume=0.55;amb.play().catch(()=>{});snd.textContent='🔊'}
   else{amb.pause();snd.textContent='🔇'}
 });
+
+/* ===== hidden nav menu: jump to any slide from anywhere ===== */
+const navT=document.getElementById('nav-t'), navP=document.getElementById('nav-p');
+function navU(key){const P=PLATEAUS;return ({
+  intro:0, growth:P[0].uStart+0.6, trans:P[1].uStart+0.6, des:P[2].uStart+0.6,
+  train:P[3].uStart+0.6, gal:P[4].uStart+0.6, rack:P[5].uStart+PL*0.14, contact:118.2+TOTAL_FREEZE
+})[key]||0;}
+function smoothScrollTo(y,ms=480){const s=scrollY,d=y-s,t0=performance.now();
+  const ease=k=>k<.5?4*k*k*k:1-Math.pow(-2*k+2,3)/2;
+  (function st(n){const k=Math.min(1,(n-t0)/ms);window.scrollTo(0,s+d*ease(k));if(k<1)requestAnimationFrame(st);})(t0);}
+navT.addEventListener('click',()=>document.body.classList.toggle('nav-open'));
+navP.addEventListener('click',e=>{
+  const a=e.target.closest('a[data-nav]');
+  if(!a){document.body.classList.remove('nav-open');return;}
+  const p=Math.max(0,Math.min(1, navU(a.dataset.nav)/(DUR+TOTAL_FREEZE)));
+  const mx=track.offsetHeight-innerHeight;
+  document.body.classList.remove('nav-open');
+  smoothScrollTo(p*mx);
+});
+addEventListener('keydown',e=>{if(e.key==='Escape')document.body.classList.remove('nav-open')});
 </script>
 </body>
 </html>
